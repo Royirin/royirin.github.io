@@ -1,0 +1,416 @@
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5CServer%5Cfavicon-apple.png">
+    <title>占位标题</title>
+    <link rel="icon" type="image/png" href="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5CServer%5Cfavicon.png" sizes="64x64">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            padding-top: 80px;
+            min-height: 100vh;
+            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+                        url('https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Cbackground.jpg') center/cover fixed;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+                            url('https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Cbackground-mobile.jpg') center/cover fixed;
+                }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .brand-text {
+            font-size: 1.5em;
+            color: #2c3e50;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            margin: 0 auto;   
+        }
+
+        .top-decoration {
+            position: relative;
+            width: 100%;
+        }
+
+        .top-decoration::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: black;
+        }
+        
+        .decoration-line {
+            height: 1px;
+            background-color: #000;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        
+        .decoration-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            width: 100%;
+        }
+        
+        .placeholder-text {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .close-button {
+            cursor: pointer;
+            font-size: 22px;
+            color: #000;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .additional-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0 auto 60px;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            z-index : 500;
+        }
+
+        .additional-box img {
+            max-width: 100%;      
+            height: auto;         
+            display: block;       
+            margin: 0 auto;      
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            border-top: 1px solid #eee;
+            z-index: 999;
+        }
+
+        .title-container-h1 {
+            margin: 0 auto; 
+            font-weight: bold;
+            font-size: 50px; 
+        }
+
+        .title-container-h2 {
+            margin: 0 auto; 
+            font-weight: bold;
+            font-size: 30px; 
+        }
+        
+        .raindrop {
+            position: fixed;
+            top: -10px;
+            width: 2px;
+            height: 20px;
+            background-color: var(--rain-color, #00a2ff); 
+            opacity: 0.5;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        html {
+        scroll-behavior: smooth;
+        }    
+
+        @media (max-width: 768px) {
+            .footer {
+                font-size: 0.8em;
+                padding: 12px 0;
+            }
+        
+            .additional-box {
+                margin-left: 20px; 
+                margin-right: 20px; 
+            }
+        }
+        
+        /* 新增样式用于折叠内容 */
+        .content-box {
+            display: none;
+        }
+        
+        .content-box.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="brand-text">占位标题0</div>
+    </div>
+
+    <div class="footer">
+        <p>© 占位copy right.</p>
+    </div>
+
+    <br>
+    <div class="additional-box" id="1">
+        <h1 class="title-container-h1">占位文本1</h1>
+        <br>
+        <h2 class="title-container-h2">占位文本2</h2>
+        <br>
+        <br>
+        <p>占位文本3</p>
+        <br>
+        <p>占位文本4</p>
+        <br>
+        <p>占位文本5</p>
+    </div>
+
+    <div class="additional-box collapsible-section">
+        <div class="top-decoration">
+            <div class="decoration-content">
+                <div class="placeholder-text">占位文本6</div>
+                <div class="close-button" data-target="content1">＋</div>
+            </div>
+        </div>
+        <div class="content-box" id="content1">
+            <br>
+            <h2 class="title-container-h2">占位文本7</h2>
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture1" width="500">
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture2" width="300">
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture3" width="250">
+        </div>
+    </div>
+
+    <div class="additional-box collapsible-section">
+        <div class="top-decoration">
+            <div class="decoration-content">
+                <div class="placeholder-text">占位文本8</div>
+                <div class="close-button" data-target="content2">＋</div>
+            </div>
+        </div>
+        <div class="content-box" id="content2">
+            <br>
+            <h2 class="title-container-h2">占位文本9</h2>
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture1" width="500">
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture2" width="300">
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture3" width="250">
+        </div>
+    </div>
+
+    <div class="additional-box collapsible-section">
+        <div class="top-decoration">
+            <div class="decoration-content">
+                <div class="placeholder-text">占位文本10</div>
+                <div class="close-button" data-target="content3">＋</div>
+            </div>
+        </div>
+        <div class="content-box" id="content3">
+            <br>
+            <h2 class="title-container-h2">占位文本11</h2>
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture1" width="500">
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture2" width="300">
+            <br>
+            <img src="https://server.rrrosmontis.icu/api/preview?path=D%3A%5Ccall%5Cimage%5Czxx%5Csample.jpeg" alt="picture3" width="250">
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <script>
+        // 雨滴效果保持不变
+        (function initRainEffect() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.position = 'fixed';
+            canvas.style.top = 0;
+            canvas.style.left = 0;
+            canvas.style.pointerEvents = 'none';
+            document.body.appendChild(canvas);
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const raindrops = [];
+            const maxDrops = 50;
+
+            function randomColor() {
+                const h = Math.floor(Math.random() * 360);
+                const s = 80 + Math.floor(Math.random() * 20);
+                const l = 50 + Math.floor(Math.random() * 20);
+                return `hsl(${h}, ${s}%, ${l}%)`;
+            }
+
+            class Raindrop {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = -20;
+                    this.speed = 0.5 + Math.random() * 3;
+                    this.size = 1 + Math.random() * 1.5;
+                    this.alpha = 0.6;
+                    this.color = randomColor();
+                }
+                update() {
+                    this.y += this.speed;
+                    if (this.y > canvas.height) this.reset();
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(this.x + this.size / 2, this.y + this.size * 2);
+                    ctx.strokeStyle = this.color; 
+                    ctx.lineWidth = this.size;
+                    ctx.stroke();
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (raindrops.length < maxDrops && Math.random() < 0.3) {
+                    raindrops.push(new Raindrop());
+                }
+                raindrops.forEach((drop, idx) => {
+                    drop.update();
+                    drop.draw();
+                    if (drop.y > canvas.height) raindrops.splice(idx, 1);
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
+        // 禁止缩放代码保持不变
+        document.addEventListener('DOMContentLoaded', function() {
+            addViewportMeta();
+            
+            document.addEventListener('touchmove', function(event) {
+                if (event.touches.length > 1) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, { passive: false });
+
+            document.addEventListener('gesturestart', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        function addViewportMeta() {
+            let viewportMeta = document.querySelector('meta[name="viewport"]');
+            if (!viewportMeta) {
+                viewportMeta = document.createElement('meta');
+                viewportMeta.name = 'viewport';
+                document.head.appendChild(viewportMeta);
+            }
+            viewportMeta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+        }
+
+        // 折叠功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const closeButtons = document.querySelectorAll('.close-button');
+            
+            closeButtons.forEach(button => {
+                let rotation = 0;
+                
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const contentBox = document.getElementById(targetId);
+                    
+                    if (contentBox.classList.contains('visible')) {
+                        contentBox.classList.remove('visible');
+                    } else {
+                        contentBox.classList.add('visible');
+                    }
+                    
+                    rotation += 45;
+                    this.style.transform = `rotate(${rotation}deg)`;
+                    
+                    if (rotation >= 360) {
+                        rotation = 0;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
